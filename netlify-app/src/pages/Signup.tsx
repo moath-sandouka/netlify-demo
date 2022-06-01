@@ -1,23 +1,38 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
-import { constRoutes } from "../constants/constRoutes";
+import { constRoutes } from "../constants/generalConstants";
 import { Link } from "react-router-dom";
-
-type formData = {
-    username: string;
-    email: string;
-    password: string;
-};
+import { USER_REGISTER_TYPE } from "../constants/interfaces";
+import { useMutation, useQueryClient } from "react-query";
+import { register } from "../services/user";
 
 function Signup() {
+    const queryClient = useQueryClient();
+    const [registerResults, setRegisterResults] = useState({});
+
+    useEffect(() => {
+        console.log(registerResults);
+    }, [registerResults]);
+    const { mutate } = useMutation(register, {
+        onSuccess: (response) => {
+            setRegisterResults(response.data);
+        },
+        onError: () => {
+            alert("there was an error");
+            setRegisterResults({});
+        },
+        onSettled: () => {
+            queryClient.invalidateQueries("create");
+        },
+    });
     const formik = useFormik({
         initialValues: {
             username: "",
             email: "",
             password: "",
         },
-        onSubmit: (values: formData) => {
-            alert(JSON.stringify(values, null, 2));
+        onSubmit: (values: USER_REGISTER_TYPE) => {
+            mutate(values);
         },
     });
     return (

@@ -3,7 +3,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import pages from "./pages";
 import components from "./componenets";
-import { constRoutes } from "./constants/constRoutes";
+import { constRoutes } from "./constants/generalConstants";
 /*
 
   This is a simulation demo for https://demo.realworld.io/#/
@@ -15,7 +15,7 @@ function App() {
         <div className="home-page">
             <components.NavBar />
             <Routes>
-                <Route path={constRoutes.SIGNUP} element={<pages.Signup />}/>
+                <Route path={constRoutes.SIGNUP} element={<pages.Signup />} />
                 <Route path={constRoutes.SIGNIN} element={<pages.Signin />} />
                 <Route path={constRoutes.HOME} element={<pages.Home />} />
                 <Route path="/" element={<pages.Home />} />

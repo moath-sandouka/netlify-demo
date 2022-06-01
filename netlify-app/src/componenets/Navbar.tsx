@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { constRoutes } from "../constants/constRoutes";
+import { constRoutes } from "../constants/generalConstants";
 
 function NavBar(): JSX.Element | null {
     return (
