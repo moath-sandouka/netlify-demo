@@ -16,16 +16,6 @@ function NavBar(): JSX.Element | null {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to={constRoutes.HOME}>
-                            <i className="ion-compose"></i>&nbsp;New Article
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to={constRoutes.HOME}>
-                            <i className="ion-gear-a"></i>&nbsp;Settings
-                        </Link>
-                    </li>
-                    <li className="nav-item">
                         <Link className="nav-link" to={constRoutes.SIGNIN}>
                             Sign in
                         </Link>

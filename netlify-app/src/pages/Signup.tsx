@@ -15,7 +15,7 @@ function Signup() {
     }, [registerResults]);
     const { mutate } = useMutation(register, {
         onSuccess: (response) => {
-            setRegisterResults(response.data);
+            setRegisterResults(response);
         },
         onError: () => {
             alert("there was an error");

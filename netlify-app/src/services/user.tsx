@@ -1,23 +1,21 @@
 import axios from "axios";
 import * as interfaces from "../constants/interfaces";
-import { apiRoutes } from "../constants/generalConstants";
-
-const API_SERVICE = process.env.REACT_APP_API_URL;
-const BASE_URL = "/api";
-const TOKEN = process.env.REACT_APP_API_TOKEN;
+import { apiRoutes, apiUrls } from "../constants/generalConstants";
 
 const config = {
-    headers: { Authorization: `Bearer ${TOKEN}` },
+    headers: { Authorization: `Bearer ${apiUrls.TOKEN}` },
 };
 
 async function login(user: interfaces.USER_LOGIN_TYPE) {
-    let url = API_SERVICE + BASE_URL + apiRoutes.POST_LOGIN;
-    return await axios.post(url, { user: { ...user } }, config);
+    let url = apiUrls.API_SERVICE + apiUrls.BASE_URL + apiRoutes.POST_LOGIN;
+    let result = await axios.post(url, { user: { ...user } }, config);
+    return result.data;
 }
 
 async function register(newUser: interfaces.USER_REGISTER_TYPE) {
-    let url = API_SERVICE + BASE_URL + apiRoutes.POST_REGISTER;
-    return await axios.post(url, { user: { ...newUser } }, config);
+    let url = apiUrls.API_SERVICE + apiUrls.BASE_URL + apiRoutes.POST_REGISTER;
+    let result = await axios.post(url, { user: { ...newUser } }, config);
+    return result.data;
 }
 
 export { login, register };

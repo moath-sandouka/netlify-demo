@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import pages from "./pages";
 import components from "./componenets";
 import { constRoutes } from "./constants/generalConstants";
+import 'react-toastify/dist/ReactToastify.css';
 /*
 
   This is a simulation demo for https://demo.realworld.io/#/
